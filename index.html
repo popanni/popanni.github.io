@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amal M Ashok - EV & Battery Systems Engineer</title>
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --secondary-dark: #ffffff;
+            --light-gray: #c2c7c8;
+            --mid-gray: #000000;
+            --accent: #4a90e2;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--primary-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 40px 0;
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid rgb(87, 210, 241);
+            margin-bottom: 20px;
+            background-color: var(--mid-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .profile-initials {
+            font-size: 64px;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--mid-gray);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--accent);
+        }
+        
+        .contact-info i {
+            margin-right: 5px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            padding: 15px 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        /* Sections */
+        section {
+            padding: 60px 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 15px auto;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--secondary-dark);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border: 2px solid var(--accent);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-company {
+            font-style: italic;
+            margin-bottom: 10px;
+            color: var(--secondary-dark);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background-color: white;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-dark);
+            border-bottom: 2px solid var(--mid-gray);
+            padding-bottom: 10px;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-item {
+            background-color: var(--light-gray);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            height: 180px;
+            background-color: var(--secondary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .project-tag {
+            background-color: var(--light-gray);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .education-card {
+            background-color: white;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .education-year {
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .education-degree {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .education-school {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .education-details {
+            color: var(--secondary-dark);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .contact-link {
+            color: var(--secondary-dark);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-link:hover {
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .footer-links {
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left {
+                text-align: left;
+            }
+            
+            .right {
+                left: 0%;
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-img">
+                    <img src="images/profile.jpg" alt="Amal M Ashok" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <h1>Amal M Ashok</h1>
+                <p class="title">EV & Battery Systems Engineer | Robotics Specialist</p>
+                <div class="contact-info">
+                    <a href="mailto:ama586@drexel.edu"><i class="fas fa-envelope"></i> ama586@drexel.edu</a>
+                    <a href="tel:+18352266263"><i class="fas fa-phone"></i> +1-835-226-6263</a>
+                    <a href="https://linkedin.com/in/yourprofile"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/yourusername"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>
+                    Results-driven engineer with over three years of experience in EV and battery systems, specializing in test planning, hardware design, and predictive modeling. Expert in electrochemical and ultrasonic testing, fabricating and optimizing 200–220 mAh sodium-ion pouch cells across voltage and temperature ranges.
+                </p>
+                <p>
+                    Skilled in Python, leveraging Selenium for automation and Raspberry Pi Pico for BMS cell emulation, cutting manual testing by 50%. Passionate about advancing sustainable energy solutions, with proven expertise in CAN protocols, UL2594 certification, and OCPP-integrated EV charging systems.
+                </p>
+                <p>
+                    My focus is on driving innovation in battery reliability and performance, combining technical expertise with collaborative problem-solving skills to create efficient and sustainable energy solutions.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <!-- Research Assistant -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Jan 2025 - Present</p>
+                        <h3 class="timeline-title">Research Assistant</h3>
+                        <p class="timeline-company">Drexel Battery Lab</p>
+                        <ul>
+                            <li>Designed ultrasound-based PID controllers for battery charge/discharge cycles</li>
+                            <li>Developed ML models for battery SOC estimation using I2C and CAN SQL data</li>
+                            <li>Conducted thermal cycling tests analyzing temperature impacts on SOC accuracy</li>
+                            <li>Fabricated 200-220 mAh sodium-ion pouch cells for electrochemical testing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Robotics Hardware Test Intern -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Jun 2024 - Jan 2025</p>
+                        <h3 class="timeline-title">Robotics Hardware Test Intern</h3>
+                        <p class="timeline-company">Ev Bots Inc</p>
+                        <ul>
+                            <li>Developed control strategies for UR3e robotic arms and EV charger handling</li>
+                            <li>Created OCPP 1.6-compliant Charge Management System in Python</li>
+                            <li>Contributed to UL2594 certification for EV charging equipment</li>
+                            <li>Engineered ArUco marker-based pose estimation for autonomous navigation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Electrical Engineer -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Jun 2024 - Oct 2024</p>
+                        <h3 class="timeline-title">Electrical Engineer</h3>
+                        <p class="timeline-company">Raptor Engineering Company</p>
+                        <ul>
+                            <li>Developed firmware for ESC control using Embedded C on Arduino</li>
+                            <li>Implemented LoRa-based RF communication and GPS systems</li>
+                            <li>Designed power management circuits for STM32-based systems</li>
+                            <li>Created metal detector for robot land mine detection</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Automation Test Engineer -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Jul 2022 - Sep 2023</p>
+                        <h3 class="timeline-title">Automation Test Engineer</h3>
+                        <p class="timeline-company">Exponent Energy Pvt Ltd</p>
+                        <ul>
+                            <li>Planned and executed test protocols for EV battery packs and charging stations</li>
+                            <li>Designed PCBs in KiCAD for CAN message loggers and energy meters</li>
+                            <li>Developed cell emulator using Raspberry Pi Pico for BMS testing</li>
+                            <li>Conducted FMEA and DFMEA on EV charging stations using MATLAB</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>EV-Relevant Expertise</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Vehicle CAN protocol</span>
+                        <span class="skill-item">Battery management systems</span>
+                        <span class="skill-item">Autonomous driving infrastructure</span>
+                        <span class="skill-item">High-voltage safety protocols</span>
+                        <span class="skill-item">Thermal management</span>
+                        <span class="skill-item">HIL Testing</span>
+                        <span class="skill-item">Test Automation</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Hardware Design</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Circuit board design (KiCAD)</span>
+                        <span class="skill-item">PCB troubleshooting</span>
+                        <span class="skill-item">EMC/EMI mitigation</span>
+                        <span class="skill-item">Vehicle harness design</span>
+                        <span class="skill-item">Test Fixture Design</span>
+                        <span class="skill-item">Fusion360</span>
+                        <span class="skill-item">CAD Software</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Embedded Systems</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Arduino</span>
+                        <span class="skill-item">Raspberry Pi</span>
+                        <span class="skill-item">STM32</span>
+                        <span class="skill-item">Jetson AGX Orin</span>
+                        <span class="skill-item">ESP32</span>
+                        <span class="skill-item">ROS</span>
+                        <span class="skill-item">Modbus</span>
+                        <span class="skill-item">I2C</span>
+                        <span class="skill-item">SPI</span>
+                        <span class="skill-item">TCP/IP</span>
+                        <span class="skill-item">OCPP</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">C</span>
+                        <span class="skill-item">C++</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">Embedded C</span>
+                        <span class="skill-item">MATLAB</span>
+                        <span class="skill-item">Selenium</span>
+                        <span class="skill-item">Simulink</span>
+                        <span class="skill-item">Linux</span>
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">SQL</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Testing Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Oscilloscope</span>
+                        <span class="skill-item">Keysight Data Logger</span>
+                        <span class="skill-item">Neware</span>
+                        <span class="skill-item">Network Analyzers</span>
+                        <span class="skill-item">Function Generators</span>
+                        <span class="skill-item">CANalyzer</span>
+                        <span class="skill-item">PCAN</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Certifications & Standards</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">UL2594</span>
+                        <span class="skill-item">IEC/EN 61000</span>
+                        <span class="skill-item">ISO 26262</span>
+                        <span class="skill-item">IPX6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/ocpp-charging.gif" alt="OCPP Charge Management System" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">OCPP Charge Management System</h3>
+                        <p>Developed an OCPP 1.6-compliant system in Python with Docker containerization and Google Cloud integration for EV charging infrastructure.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">OCPP</span>
+                            <span class="project-tag">Docker</span>
+                            <span class="project-tag">Google Cloud</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/nav.gif" alt="Autonomous EV Charger Navigation" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Autonomous EV Charger Navigation</h3>
+                        <p>Engineered ArUco marker-based pose estimation with Intel RealSense D435i and LiDAR for real-time obstacle avoidance in EV charging robots.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">ROS</span>
+                            <span class="project-tag">Computer Vision</span>
+                            <span class="project-tag">LiDAR</span>
+                            <span class="project-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/stm32.gif" alt="STM32F405 Home Automation" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">STM32F405 Home Automation</h3>
+                        <p>Designed a circuit with USB Type-C, BLE, Wi-Fi and UART for comprehensive home automation control and connectivity.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">STM32</span>
+                            <span class="project-tag">KiCad</span>
+                            <span class="project-tag">BLE</span>
+                            <span class="project-tag">Embedded C</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/bike.gif" alt="Self-Charging Electric Bike" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Self-Charging Electric Bike</h3>
+                        <p>Designed and developed an electric bike with innovative Battery Constellation Technology for extended range and efficiency.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Battery Systems</span>
+                            <span class="project-tag">EV Design</span>
+                            <span class="project-tag">Power Management</span>
+                            <span class="project-tag">CAD</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/robot.gif" alt="Disease Prediction Robot" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Disease Prediction Robot</h3>
+                        <p>Created an automated diagnostic assistant using Python CNN and Raspberry Pi to aid doctors in preliminary disease assessment.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">CNN</span>
+                            <span class="project-tag">Raspberry Pi</span>
+                            <span class="project-tag">ML</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/fire.gif" alt="Smart Fire Detection System" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Smart Fire Detection System</h3>
+                        <p>Arduino-based automated system for vehicles that detects and extinguishes fires, enhancing safety in automotive applications.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Arduino</span>
+                            <span class="project-tag">Sensors</span>
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">Safety Systems</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <p class="education-year">Sep 2024 - May 2025</p>
+                    <h3 class="education-degree">Master of Science, Robotics and Autonomy</h3>
+                    <p class="education-school">Drexel University</p>
+                    <p class="education-details">Finalist, Drexel Startup Award</p>
+                </div>
+                
+                <div class="education-card">
+                    <p class="education-year">Jan 2018 - Aug 2022</p>
+                    <h3 class="education-degree">Bachelor of Technology, Mechatronics</h3>
+                    <p class="education-school">Malabar College of Engineering</p>
+                    <p class="education-details">College Rank Holder</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <p>I'm always interested in new opportunities, collaborations, and connecting with fellow professionals in the EV, robotics, and battery systems space.</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <a href="mailto:ama586@drexel.edu" class="contact-link">ama586@drexel.edu</a>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <a href="https://linkedin.com/in/yourprofile" class="contact-link">LinkedIn</a>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <a href="https://github.com/yourusername" class="contact-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact
